@@ -1,108 +1,127 @@
-# 🎬 Sky Movie — Web Backend
+# 🎬 Sky Movie — Movie & TV Series Web Backend
 
-بک‌اند وب‌سایت پخش و مدیریت فیلم و سریال، نوشته‌شده با **Django**. این پروژه امکاناتی مثل ثبت‌نام با شماره موبایل، پروفایل کاربری، اشتراک ویژه (Premium)، امتیازدهی، کامنت، لیست علاقه‌مندی‌ها (Watchlist/Favorites) و مدیریت فصل/قسمت برای سریال‌ها را فراهم می‌کند.
+A Django-based web application backend for streaming and managing movies and TV series. The project provides a range of features, including phone-number-based authentication, user profiles, premium subscriptions, ratings, comments, watchlists, favorites, and season and episode management for TV series.
 
-## ✨ امکانات
+## ✨ Features
 
-- **حساب کاربری اختصاصی** بر پایه‌ی شماره موبایل (بدون یوزرنیم) با پروفایل جدا (`accounts` app)
-- سیستم **اشتراک ویژه (Premium)** برای کاربران
-- مدیریت **فیلم و سریال** با ژانر، سال ساخت، امتیاز IMDb و پوستر (`movies` app)
-- ساختار **فصل و قسمت (Season/Episode)** برای سریال‌ها
-- **امتیازدهی (Rating)**، **کامنت**، **لیست تماشا (Watchlist)** و **علاقه‌مندی‌ها (Favorites)**
-- صفحات: جدیدترین‌ها، پربازدیدترین‌ها، پیشنهادی بر اساس سلیقه کاربر، جستجو و جستجوی پیشرفته
-- چند **API با خروجی JSON** برای واچ‌لیست، علاقه‌مندی‌ها، امتیازها و کامنت‌ها
+- **User Authentication:** Dedicated user accounts based on mobile phone numbers, without requiring usernames.
+- **User Profiles:** Individual profiles for registered users.
+- **Premium Subscription:** A subscription system that provides premium features for users.
+- **Movie & TV Series Management:** Manage movies and TV shows with genres, release years, IMDb ratings, and posters.
+- **Season & Episode Management:** Organized season and episode structures for TV series.
+- **Rating System:** Allow users to rate movies and TV shows.
+- **Comments:** Enable users to share their opinions and discuss content.
+- **Watchlist & Favorites:** Let users save content to their personal watchlists and favorites.
+- **Content Discovery:**
+  - Latest releases
+  - Most-viewed content
+  - Personalized recommendations
+  - Search and advanced search
+- **JSON APIs:** API endpoints for managing watchlists, favorites, ratings, and comments.
 
-## 🛠 تکنولوژی‌ها
+## 🛠 Technologies
 
-- Python 3.14+
-- Django 6.0
-- Pillow (پردازش تصاویر)
-- SQLite (پایگاه‌داده پیش‌فرض توسعه)
+- **Python 3.14+**
+- **Django 6.0**
+- **Pillow** — Image processing
+- **SQLite** — Default development database
+- **HTML, CSS, JavaScript**
 
-## 📁 ساختار پروژه
+## 📁 Project Structure
 
-```
+```text
 sky-movie-web-backend/
-├── accounts/        # کاربر، پروفایل، اشتراک ویژه
-├── movies/          # فیلم، سریال، فصل/قسمت، امتیاز، کامنت، واچ‌لیست
-├── config/          # تنظیمات پروژه، URLها
-├── static/          # CSS، JS، تصاویر ثابت
-├── templates/        # قالب‌های HTML
-├── media/           # فایل‌های آپلودی (پوستر، عکس فصل/قسمت) — در گیت نادیده گرفته می‌شود
-├── requirements.txt
-├── .env.example
-└── manage.py
+├── accounts/         # User accounts, profiles, and premium subscriptions
+├── movies/           # Movies, TV series, seasons, episodes, ratings, and comments
+├── config/           # Project configuration and URL routing
+├── static/           # CSS, JavaScript, and static images
+├── templates/        # HTML templates
+├── media/            # Uploaded files (posters and season/episode images)
+├── requirements.txt  # Project dependencies
+├── .env.example      # Environment variable template
+└── manage.py         # Django management utility
 ```
 
-## 🚀 راه‌اندازی روی سیستم شما
+## 🚀 Installation & Setup
 
-### ۱. کلون کردن پروژه
+### 1. Clone the Repository
 
 ```bash
-git clone <آدرس-ریپوی-گیت‌لب-شما>
-cd sky-movie-web-backend
+git clone https://github.com/SaminAkbariz/Movie-web-backend-with-django-.git
+cd Movie-web-backend-with-django-
 ```
 
-### ۲. ساخت محیط مجازی (virtualenv)
+### 2. Create a Virtual Environment
 
 ```bash
 python -m venv venv
+```
 
-# ویندوز
+**Windows:**
+```bash
 venv\Scripts\activate
+```
 
-# لینوکس / مک
+**Linux / macOS:**
+```bash
 source venv/bin/activate
 ```
 
-### ۳. نصب وابستگی‌ها
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### ۴. تنظیم متغیرهای محیطی
+### 4. Configure Environment Variables
 
-فایل نمونه را کپی کنید و مقادیر را در صورت نیاز عوض کنید:
+Create a `.env` file based on the provided example:
 
 ```bash
 cp .env.example .env
 ```
 
-یک `SECRET_KEY` تصادفی و امن هم می‌توانید با دستور زیر بسازید:
+Generate a secure Django secret key using:
 
 ```bash
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 ```
 
-و آن را داخل `.env` جایگزین کنید.
+Add the generated key to your `.env` file and configure the required environment variables.
 
-### ۵. اجرای مایگریشن‌ها
+### 5. Apply Database Migrations
 
 ```bash
 python manage.py migrate
 ```
 
-### ۶. ساخت کاربر ادمین (اختیاری)
+### 6. Create a Superuser (Optional)
 
 ```bash
 python manage.py createsuperuser
 ```
 
-### ۷. اجرای سرور توسعه
+### 7. Run the Development Server
 
 ```bash
 python manage.py runserver
 ```
 
-سایت روی آدرس `http://127.0.0.1:8000/` و پنل ادمین روی `http://127.0.0.1:8000/admin/` در دسترس خواهد بود.
+The application will be available at:
 
-## 🔐 نکات امنیتی قبل از انتشار عمومی روی گیت
+- **Website:** http://127.0.0.1:8000/
+- **Django Admin:** http://127.0.0.1:8000/admin/
 
-- فایل `db.sqlite3` و پوشه‌ی `media/` در `.gitignore` قرار گرفته‌اند و پوش نمی‌شوند (چون داده‌های واقعی/آزمایشی هستند).
-- `SECRET_KEY` دیگر داخل کد هاردکد نیست و از `.env` خوانده می‌شود؛ **حتماً** قبل از انتشار عمومی یک کلید جدید بسازید (به بخش بالا نگاه کنید).
-- روی سرور واقعی (production) حتماً `DEBUG=False` بگذارید و `ALLOWED_HOSTS` را به دامنه واقعی محدود کنید.
+## 🔐 Security Considerations
 
-## 📄 لایسنس
+Before deploying the project to a production environment:
 
-این پروژه تحت لایسنس [MIT](LICENSE) منتشر شده است — آزادانه قابل استفاده، تغییر و توزیع است.
+- Never expose your `.env` file or Django secret key.
+- Keep `db.sqlite3` and the `media/` directory out of version control.
+- Set `DEBUG=False` in production.
+- Configure `ALLOWED_HOSTS` to include only your trusted domain names.
+- Generate a new and secure `SECRET_KEY` for production.
+
+## 📄 License
+
+This project is licensed under the **MIT License**. You are free to use, modify, and distribute the software in accordance with the license terms.
