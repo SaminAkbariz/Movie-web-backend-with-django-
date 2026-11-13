@@ -6,6 +6,12 @@ A Django-based web application backend for streaming and managing movies and TV 
 
 ![Movie Website Preview](site%20movie.png)
 
+## 🎬 Project Demo
+
+Watch the full demonstration of this project on YouTube:
+
+[▶ Watch the Movie Website Demo](https://youtu.be/bp8D_hoEnAo)
+
 
 ## ✨ Features
 
