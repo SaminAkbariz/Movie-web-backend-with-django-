@@ -2,6 +2,11 @@
 
 A Django-based web application backend for streaming and managing movies and TV series. The project provides a range of features, including phone-number-based authentication, user profiles, premium subscriptions, ratings, comments, watchlists, favorites, and season and episode management for TV series.
 
+## Website Preview
+
+![Movie Website Preview](site%20movie.png)
+
+
 ## ✨ Features
 
 - **User Authentication:** Dedicated user accounts based on mobile phone numbers, without requiring usernames.
